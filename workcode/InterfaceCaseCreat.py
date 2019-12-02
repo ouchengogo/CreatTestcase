@@ -72,11 +72,11 @@ class GetBaseDataObject(object):
             if interface_type == "输入接口":
                 testcase = []  # 存储一条测试用例，然后转存至用例集中
                 #创建均为正常值的输入用例
-                testmudi = "正常值-#@%-%@#-" + "输入" + interface_name + "报文" + "-各字段均为正常值"
-                testbuzhou = "使用" + interface_sim_name + "向" + software_by_test_name + "发送" + "“" + interface_name + "”" "具体内容如下" + "" \
+                testmudi = "正常值-#@%-%@#-" + "输入" + str(interface_name) + "报文" + "-各字段均为正常值"
+                testbuzhou = "使用" + str(interface_sim_name) + "向" + str(software_by_test_name) + "发送" + "“" + str(interface_name) + "”" "具体内容如下" + "" \
                              ":\n" + ("".join(self.merge_value_exchange_list(table.col_values(0, start_rowx=4, end_rowx=nrows + 1), table.col_values(4, start_rowx=4, end_rowx=nrows + 1))))
-                testyuqi = software_by_test_name + "可以接收处理" + interface_name + "报文的各字段为正常值，并且正常接收该" + interface_name + "报文"
-                testzhunze = software_by_test_name + "可以正确识别" + interface_name + "接口数据，并做出正确处理"
+                testyuqi = str(software_by_test_name) + "可以接收处理" + str(interface_name) + "报文的各字段为正常值，并且正常接收该" + str(interface_name) + "报文"
+                testzhunze = str(software_by_test_name) + "可以正确识别" + str(interface_name) + "接口数据，并做出正确处理"
                 #将正常值用例各属性添加到一条测试用例列表中
                 testcase.append(testmudi)
                 testcase.append(testbuzhou)
@@ -97,10 +97,10 @@ class GetBaseDataObject(object):
                                 if len(ziduan_value_suit) > 1:#正常值的用例，存在多种情况那种
                                     for m in ziduan_value_suit:
                                         testcase = []  # 存储一条测试用例，然后转存至用例集中
-                                        testmudi = "特殊值-#@%-%@#-" + "输入" + interface_name + "报文" + "-" + table.cell_value(k, 0) + "字段为" + l
-                                        testbuzhou = "使用" + interface_sim_name + "向" + software_by_test_name + "发送" + "“" + interface_name + "”，具体内容如下:\n" + ("".join(self.exclude_value(table.cell_value(k, 0), self.normal_value_list))) + table.cell_value(k, 0) + "字段为：" + m
-                                        testyuqi = software_by_test_name + "可以接收处理" + interface_name + "报文的" + table.cell_value(k, 0) + "字段为" + l + "并且正常接收该" + interface_name + "报文"
-                                        testzhunze = software_by_test_name + "可以正确识别" + interface_name + "接口数据，并做出正确处理"
+                                        testmudi = "特殊值-#@%-%@#-" + "输入" + str(interface_name) + "报文" + "-" + table.cell_value(k, 0) + "字段为" + l
+                                        testbuzhou = "使用" + str(interface_sim_name) + "向" + str(software_by_test_name) + "发送" + "“" + str(interface_name) + "”，具体内容如下:\n" + ("".join(self.exclude_value(table.cell_value(k, 0), self.normal_value_list))) + table.cell_value(k, 0) + "字段为：" + m
+                                        testyuqi = str(software_by_test_name) + "可以接收处理" + str(interface_name) + "报文的" + table.cell_value(k, 0) + "字段为" + l + "并且正常接收该" + str(interface_name) + "报文"
+                                        testzhunze = str(software_by_test_name) + "可以正确识别" + str(interface_name) + "接口数据，并做出正确处理"
                                         # 将用例各属性添加到一条测试用例列表中
                                         testcase.append(testmudi)
                                         testcase.append(testbuzhou)
@@ -111,10 +111,10 @@ class GetBaseDataObject(object):
                                         #print("测试目的：%s\n测试步骤：%s\n测试预期：%s\n测试准则：%s\n******************" % (testmudi, testbuzhou, testyuqi, testzhunze))
                                 else:#正常值的用例，不存在多种情况那种
                                     testcase = []  # 存储一条测试用例，然后转存至用例集中
-                                    testmudi = "特殊值-#@%-%@#-" + "输入" + interface_name + "报文" + "-" + table.cell_value(k, 0) + "字段为" + l
-                                    testbuzhou = "使用" + interface_sim_name + "向" + software_by_test_name + "发送" + "“" + interface_name + "”，具体内容如下:\n" + ("".join(self.exclude_value(table.cell_value(k, 0),self.normal_value_list))) + table.cell_value(k, 0) + "字段为：" + "".join(ziduan_value_suit)
-                                    testyuqi = software_by_test_name + "可以接收处理" + interface_name + "报文的" + table.cell_value(k, 0) + "字段为" + l + "并且正常接收该" + interface_name + "报文"
-                                    testzhunze = software_by_test_name + "可以正确识别" + interface_name + "接口数据，并做出正确处理"
+                                    testmudi = "特殊值-#@%-%@#-" + "输入" + str(interface_name) + "报文" + "-" + table.cell_value(k, 0) + "字段为" + l
+                                    testbuzhou = "使用" + str(interface_sim_name) + "向" + str(software_by_test_name) + "发送" + "“" + interface_name + "”，具体内容如下:\n" + ("".join(self.exclude_value(table.cell_value(k, 0),self.normal_value_list))) + table.cell_value(k, 0) + "字段为：" + "".join(ziduan_value_suit)
+                                    testyuqi = str(software_by_test_name) + "可以接收处理" + str(interface_name) + "报文的" + table.cell_value(k, 0) + "字段为" + l + "并且正常接收该" + str(interface_name) + "报文"
+                                    testzhunze = str(software_by_test_name) + "可以正确识别" + str(interface_name) + "接口数据，并做出正确处理"
                                     # 将用例各属性添加到一条测试用例列表中
                                     testcase.append(testmudi)
                                     testcase.append(testbuzhou)
@@ -130,10 +130,10 @@ class GetBaseDataObject(object):
                                 if len(ziduan_value_suit) > 1:#异常值的用例，存在多种情况那种
                                     for n in ziduan_value_suit:
                                         testcase = []  # 存储一条测试用例，然后转存至用例集中
-                                        testmudi = "异常值-#@%-%@#-" + "输入" + interface_name + "报文" + "-" + table.cell_value(k, 0) + "字段为" + l
-                                        testbuzhou = "使用" + interface_sim_name + "向" + software_by_test_name + "发送" + "“" + interface_name + "”，具体内容如下:\n" + ("".join(self.exclude_value(table.cell_value(k, 0), self.normal_value_list))) + table.cell_value(k, 0) + "字段为：" + n
-                                        testyuqi = software_by_test_name + "可以接收处理" + interface_name + "报文的" + table.cell_value(k, 0) + "字段为" + l + "并且抛出该报文"
-                                        testzhunze = software_by_test_name + "可以正确识别" + interface_name + "接口数据，并做出正确处理"
+                                        testmudi = "异常值-#@%-%@#-" + "输入" + str(interface_name) + "报文" + "-" + table.cell_value(k, 0) + "字段为" + l
+                                        testbuzhou = "使用" + str(interface_sim_name) + "向" + str(software_by_test_name) + "发送" + "“" + str(interface_name) + "”，具体内容如下:\n" + ("".join(self.exclude_value(table.cell_value(k, 0), self.normal_value_list))) + table.cell_value(k, 0) + "字段为：" + n
+                                        testyuqi = str(software_by_test_name) + "可以接收处理" + str(interface_name) + "报文的" + table.cell_value(k, 0) + "字段为" + l + "并且抛出该报文"
+                                        testzhunze = str(software_by_test_name) + "可以正确识别" + str(interface_name) + "接口数据，并做出正确处理"
                                         # 将用例各属性添加到一条测试用例列表中
                                         testcase.append(testmudi)
                                         testcase.append(testbuzhou)
@@ -144,10 +144,10 @@ class GetBaseDataObject(object):
                                         #print("测试目的：%s\n测试步骤：%s\n测试预期：%s\n测试准则：%s\n******************" % (testmudi, testbuzhou, testyuqi, testzhunze))
                                 else:#异常值的用例，不存在多种情况那种
                                     testcase = []  # 存储一条测试用例，然后转存至用例集中
-                                    testmudi = "异常值-#@%-%@#-" + "输入" + interface_name + "报文" + "-" + table.cell_value(k, 0) + "字段为" + l
-                                    testbuzhou = "使用" + interface_sim_name + "向" + software_by_test_name + "发送" + "“" + interface_name + "”，具体内容如下:\n" + ("".join(self.exclude_value(table.cell_value(k, 0),self.normal_value_list))) + table.cell_value(k, 0) + "字段为：" + "".join(ziduan_value_suit)
-                                    testyuqi = software_by_test_name + "可以接收处理" + interface_name + "报文的" + table.cell_value(k, 0) + "字段为" + l + "并且抛出该报文"
-                                    testzhunze = software_by_test_name + "可以正确识别" + interface_name + "接口数据，并做出正确处理"
+                                    testmudi = "异常值-#@%-%@#-" + "输入" + str(interface_name) + "报文" + "-" + table.cell_value(k, 0) + "字段为" + l
+                                    testbuzhou = "使用" + str(interface_sim_name) + "向" + str(software_by_test_name) + "发送" + "“" + str(interface_name) + "”，具体内容如下:\n" + ("".join(self.exclude_value(table.cell_value(k, 0),self.normal_value_list))) + table.cell_value(k, 0) + "字段为：" + "".join(ziduan_value_suit)
+                                    testyuqi = str(software_by_test_name) + "可以接收处理" + str(interface_name) + "报文的" + table.cell_value(k, 0) + "字段为" + l + "并且抛出该报文"
+                                    testzhunze = str(software_by_test_name) + "可以正确识别" + str(interface_name) + "接口数据，并做出正确处理"
                                     # 将用例各属性添加到一条测试用例列表中
                                     testcase.append(testmudi)
                                     testcase.append(testbuzhou)
@@ -159,10 +159,10 @@ class GetBaseDataObject(object):
             elif interface_type == "输出接口":
                 testcase = []  # 存储一条测试用例，然后转存至用例集中
                 # 创建均为正常值的输入用例
-                testmudi = "正常操作-#@%-%@#-" + "输出" + interface_name + "报文"
-                testbuzhou = "通过功能驱动，使" + software_by_test_name + "向" + interface_sim_name + "输出" + "“" + interface_name + "”报文，检查报文样式、内容是否与接口文档所述一致"
-                testyuqi = software_by_test_name + "输出的" + interface_name + "报文，其样式符合文档要求，内容与功能操作匹配"
-                testzhunze = software_by_test_name + "具备输出符合接口文档要求的" + interface_name + "报文"
+                testmudi = "正常操作-#@%-%@#-" + "输出" + str(interface_name) + "报文"
+                testbuzhou = "通过功能驱动，使" + str(software_by_test_name) + "向" + str(interface_sim_name) + "输出" + "“" + str(interface_name) + "”报文，检查报文样式、内容是否与接口文档所述一致"
+                testyuqi = str(software_by_test_name) + "输出的" + str(interface_name) + "报文，其样式符合文档要求，内容与功能操作匹配"
+                testzhunze = str(software_by_test_name) + "具备输出符合接口文档要求的" + str(interface_name) + "报文"
                 # 将正常值用例各属性添加到一条测试用例列表中
                 testcase.append(testmudi)
                 testcase.append(testbuzhou)
